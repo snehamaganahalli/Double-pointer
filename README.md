@@ -33,10 +33,10 @@ value:0x5646a589f2d0 => it acts as the base address of the array.
 
 So array is created from 0x5646a589f2d0 ... 0x5646a589f350
 
-if you deference pp i.e *pp or *(pp+0) you get the base address of the array 0x5646a589f2d0.
-*(pp+1) gives the send address of the array 0x5646a589f2f0.
-
-If you want to geth the value, then you need to deference twice i.e **pp or **(pp+0) to get 0, **(pp+1) to get 10
+pp is a pointer to a pointer to int (int **).
+pp + i moves the pointer i positions forward in the array of int* pointers.
+*(pp + i) dereferences that position — this gives you the int* stored at pp[i].
+**(pp + i) dereferences that int* — this gives you the actual int value stored at *pp[i].
 
 0x5646a589f2d0 - 0x5646a589f2f0 = 0x20 = 32 bytes. actually it should be 8 bytes on 64 bit machine. i.e. size of each integer. But for the performace reasons it is 32.
 Dont get confused!!! Samll allocations are rounded up to 32B
